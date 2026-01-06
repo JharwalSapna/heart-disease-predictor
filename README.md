@@ -210,65 +210,46 @@ Triggered on push/PR to `main` branch.
 
 ## Architecture
 
-See [docs/architecture.md](docs/architecture.md) for detailed architecture diagrams and component descriptions.
+See [docs/architecture.md](docs/architecture.md) for detailed architecture diagrams.
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         CI/CD Pipeline                               │
-│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────────────┐  │
-│  │ GitHub  │───►│  Lint   │───►│  Test   │───►│  Docker Build   │  │
-│  └─────────┘    └─────────┘    └─────────┘    └─────────────────┘  │
-└─────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         Training Pipeline                            │
-│  ┌─────────┐    ┌─────────────┐    ┌─────────┐    ┌─────────────┐  │
-│  │Raw Data │───►│Preprocessing│───►│ Models  │───►│Best Model   │  │
-│  └─────────┘    └─────────────┘    └─────────┘    └─────────────┘  │
-│                                         │                           │
-│                                         ▼                           │
-│                                   ┌─────────┐                       │
-│                                   │ MLflow  │                       │
-│                                   └─────────┘                       │
-└─────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         Serving Layer                                │
-│  ┌─────────────────────────────────────────────────────────────┐   │
-│  │                     FastAPI Application                      │   │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │   │
-│  │  │ /predict │  │ /health  │  │ /metrics │  │ /docs    │    │   │
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘    │   │
-│  └─────────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         Deployment                                   │
-│  ┌─────────────┐         ┌──────────────────────────────────────┐  │
-│  │   Docker    │────────►│         Kubernetes Cluster           │  │
-│  │  Container  │         │  ┌─────────┐  ┌─────────┐           │  │
-│  └─────────────┘         │  │  Pod 1  │  │  Pod 2  │           │  │
-│                          │  └─────────┘  └─────────┘           │  │
-│                          │        ▲            ▲                │  │
-│                          │        └─────┬──────┘                │  │
-│                          │              │                       │  │
-│                          │     ┌────────────────┐               │  │
-│                          │     │ LoadBalancer   │               │  │
-│                          │     └────────────────┘               │  │
-│                          └──────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         Monitoring                                   │
-│  ┌─────────────┐         ┌─────────────┐                           │
-│  │ Prometheus  │────────►│   Grafana   │                           │
-│  │  /metrics   │         │  Dashboard  │                           │
-│  └─────────────┘         └─────────────┘                           │
-└─────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph CI/CD["CI/CD Pipeline"]
+        A[GitHub Push] --> B[Lint]
+        B --> C[Test]
+        C --> D[Docker Build]
+    end
+    
+    subgraph Training["Training Pipeline"]
+        E[Raw Data] --> F[Preprocessing]
+        F --> G[Train Models]
+        G --> H[Best Model]
+        G --> I[MLflow]
+    end
+    
+    subgraph Serving["Serving Layer"]
+        J[FastAPI]
+        J --> K["/predict"]
+        J --> L["/health"]
+        J --> M["/metrics"]
+    end
+    
+    subgraph Deploy["Deployment"]
+        N[Docker] --> O[Kubernetes]
+        O --> P[Pod 1]
+        O --> Q[Pod 2]
+        R[LoadBalancer] --> P
+        R --> Q
+    end
+    
+    subgraph Monitor["Monitoring"]
+        S[Prometheus] --> T[Grafana]
+    end
+    
+    CI/CD --> Training
+    Training --> Serving
+    Serving --> Deploy
+    Deploy --> Monitor
 ```
 
 ## Monitoring
