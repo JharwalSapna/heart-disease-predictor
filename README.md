@@ -143,6 +143,7 @@ mlflow ui --backend-store-uri file:./mlruns
   "risk_level": "High"
 }
 ```
+prboability=confidence
 
 ## Testing
 
