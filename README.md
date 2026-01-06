@@ -98,15 +98,21 @@ mlflow ui --backend-store-uri file:./mlruns
 # Open http://localhost:5000
 ```
 
+![MLflow Experiments](screenshots/mlflow_models.png)
+
+![MLflow Metrics Comparison](screenshots/mlflow_comparison_metrics.png)
+
 ### API Endpoints
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/` | GET | API information |
-| `/health` | GET | Health check |
-| `/predict` | POST | Single prediction |
-| `/predict/batch` | POST | Batch predictions |
-| `/metrics` | GET | Prometheus metrics |
+| Endpoint        | Method | Description        |
+|-----------------|--------|--------------------|
+| `/`             | GET    | API information    |
+| `/health`       | GET    | Health check       |
+| `/predict`      | POST   | Single prediction  |
+| `/predict/batch`| POST   | Batch predictions  |
+| `/metrics`      | GET    | Prometheus metrics |
+
+![FastAPI Docs](screenshots/fastapi.png)
 
 ### API Request Example
 ```json
@@ -293,15 +299,19 @@ The dashboard is auto-provisioned and includes:
 - Total predictions counter
 - Average latency stat
 
+![Grafana Dashboard](screenshots/grafana_report.png)
+
 You can also manually import `deployment/monitoring/grafana-dashboard.json`.
 
 ## Model Performance
 
-| Model | Accuracy | ROC-AUC | F1 Score |
-|-------|----------|---------|----------|
-| Logistic Regression | 0.89 | 0.97 | 0.88 |
-| Random Forest | 0.87 | 0.95 | 0.86 |
-| XGBoost | 0.85 | 0.94 | 0.84 |
+| Model               | Accuracy | ROC-AUC | F1 Score |
+|---------------------|----------|---------|----------|
+| Logistic Regression | 0.89     | 0.97    | 0.88     |
+| Random Forest       | 0.87     | 0.95    | 0.86     |
+| XGBoost             | 0.85     | 0.94    | 0.84     |
+
+![Model Comparison](screenshots/model_comparison.png)
 
 ## Feature Importance
 
@@ -311,3 +321,9 @@ Top predictive features:
 3. `oldpeak` (ST Depression)
 4. `ca` (Number of Major Vessels)
 5. `thal` (Thalassemia)
+
+![Feature Importance](screenshots/feature_importance.png)
+
+## Repository
+
+GitHub: [https://github.com/JharwalSapna/heart-disease-predictor](https://github.com/JharwalSapna/heart-disease-predictor)

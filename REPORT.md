@@ -100,6 +100,10 @@ Categorical features showed strong predictive signals:
 
 4. **Number of Major Vessels (ca)**: Higher values correlated strongly with heart disease presence
 
+![Target Distribution](screenshots/target_distribution.png)
+
+![Correlation Heatmap](screenshots/correlation_heatmap.png)
+
 ### 2.3 Correlation Analysis
 
 The correlation matrix revealed key insights:
@@ -182,6 +186,8 @@ Three classification algorithms were evaluated:
 | Random Forest | 0.831 | 0.856 | 0.770 | 0.807 | 0.889 |
 | XGBoost | 0.819 | 0.841 | 0.761 | 0.795 | 0.876 |
 
+![Model Comparison](screenshots/model_comparison.png)
+
 ### 3.5 Model Selection
 
 **Logistic Regression** was selected as the best model based on:
@@ -248,6 +254,10 @@ For each model run, the following were tracked:
 4. **Collaboration**: Shareable experiment results
 
 ### 4.4 MLflow UI
+
+![MLflow Experiments](screenshots/mlflow_models.png)
+
+![MLflow Metrics Comparison](screenshots/mlflow_comparison_metrics.png)
 
 The MLflow UI provides:
 - Run comparison tables
@@ -351,6 +361,8 @@ The REST API provides:
 - Clear error messages for invalid inputs
 - Documented field constraints
 
+![FastAPI Documentation](screenshots/fastapi.png)
+
 ### 6.3 Kubernetes Deployment
 
 Kubernetes manifests were created for production deployment:
@@ -419,6 +431,8 @@ Services deployed:
 - Heart Disease API (port 8000)
 - Prometheus (port 9090)
 - Grafana (port 3000)
+
+![Grafana Dashboard](screenshots/grafana_report.png)
 
 ### 7.4 Alerting Considerations
 
