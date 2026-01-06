@@ -311,11 +311,3 @@ Top predictive features:
 3. `oldpeak` (ST Depression)
 4. `ca` (Number of Major Vessels)
 5. `thal` (Thalassemia)
-
-## License
-
-This project is for educational purposes as part of the MLOps course assignment.
-
-## Author
-
-MLOps Assignment - S1-25_AIMLCZG523
