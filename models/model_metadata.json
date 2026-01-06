@@ -1,26 +1,12 @@
 {
-  "model_name": "Logistic Regression",
+  "model_name": "logistic_regression",
   "metrics": {
-    "accuracy": 0.8471088435374149,
-    "precision": 0.8767529146045769,
-    "recall": 0.783399209486166,
-    "f1": 0.8245007436109558,
-    "roc_auc": 0.9017938583155974,
-    "cv_std": 0.014693920442709665
-  },
-  "features": [
-    "age",
-    "trestbps",
-    "chol",
-    "thalach",
-    "oldpeak",
-    "sex",
-    "cp",
-    "fbs",
-    "restecg",
-    "exang",
-    "slope",
-    "ca",
-    "thal"
-  ]
+    "accuracy": 0.8852459016393442,
+    "precision": 0.8387096774193549,
+    "recall": 0.9285714285714286,
+    "f1": 0.8813559322033899,
+    "roc_auc": 0.9664502164502166,
+    "cv_mean_roc_auc": 0.9017938583155974,
+    "cv_std_roc_auc": 0.014693920442709665
+  }
 }
