@@ -1,0 +1,32 @@
+# Prometheus configuration for Heart Disease API monitoring
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Heart Disease API metrics
+  - job_name: 'heart-disease-api'
+    static_configs:
+      - targets: ['host.docker.internal:8000']  # For Docker Desktop
+    metrics_path: '/metrics'
+    scrape_interval: 5s
+
+  # Alternative configuration for Kubernetes
+  # - job_name: 'heart-disease-api-k8s'
+  #   kubernetes_sd_configs:
+  #     - role: pod
+  #   relabel_configs:
+  #     - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+  #       action: keep
+  #       regex: true
+  #     - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+  #       action: replace
+  #       target_label: __metrics_path__
+  #       regex: (.+)
+
+
