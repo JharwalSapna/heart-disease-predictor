@@ -86,10 +86,6 @@ models/*.joblib
 models/*.pkl
 models/*.onnx
 
-# Data (keep structure but ignore large files)
-data/raw/*.csv
-data/processed/*.csv
-
 # Secrets
 .env
 *.pem

@@ -51,6 +51,7 @@ mlops-assignment/
 |-- data/                       # Dataset storage
 |   |-- raw/
 |   +-- processed/
+|   +-- heart.csv
 |-- deployment/                 # Docker & Kubernetes
 |   |-- Dockerfile
 |   +-- k8s/
