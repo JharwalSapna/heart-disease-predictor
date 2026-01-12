@@ -51,6 +51,8 @@ mlops-assignment/
 |-- data/                       # Dataset storage
 |   |-- raw/
 |   +-- processed/
+|   +-- download_data.py
+|   +-- heart.csv
 |-- deployment/                 # Docker & Kubernetes
 |   |-- Dockerfile
 |   +-- k8s/
@@ -141,6 +143,7 @@ mlflow ui --backend-store-uri file:./mlruns
   "risk_level": "High"
 }
 ```
+prboability=confidence
 
 ## Testing
 
@@ -307,4 +310,4 @@ Top predictive features:
 
 ## Repository
 
-GitHub: [https://github.com/JharwalSapna/heart-disease-predictor](https://github.com/JharwalSapna/heart-disease-predictor)
+GitHub: (https://github.com/sumkusmum-bits2024/heart-disease-predictor)
